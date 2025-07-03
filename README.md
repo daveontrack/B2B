@@ -149,7 +149,7 @@ npm run dev # in both frontend and backend folders
 ---
 
 ## Submission Links
-- GitHub: https://github.com/[yourname]/tender-platform
+- GitHub:(https://github.com/daveontrack/B2B)
 - Loom Video: https://loom.com/share/b234
 
 ---
