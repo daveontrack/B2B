@@ -1,18 +1,46 @@
 
-```
-# B2B Tender Platform - Internship Submission
-
-## Deliverables Checklist
-- [x] GitHub Repository
-- [x] Database Schema (ER Diagram)
-- [x] Architecture Overview
-- [x] Loom Video Walkthrough
-
----
-
-## Database Schema (ER Diagram)
 
 ```
+# B2B Tender Management Platform
+
+A full-stack solution for companies to manage tenders and business collaborations, built as part of a 5-day internship challenge.
+
+## Features
+
+### Core Functionality
+- ✅ Company registration and profile management
+- ✅ Tender creation and publishing
+- ✅ Browse and apply to tenders
+- ✅ Advanced company search (name/industry/services)
+- ✅ Company profile viewing with complete details
+
+### Technical Implementation
+- **Authentication**: JWT-based secure access
+- **Storage**: Supabase integration for logo/image uploads
+- **Search**: Efficient server-side filtering
+- **Pagination**: Optimized tender listings
+
+## Technology Stack
+
+### Frontend
+- Next.js (TypeScript)
+- Static and Server-side Rendering
+- Client-side form validation
+
+### Backend
+- Express.js (TypeScript)
+- Modular route architecture
+- Zod input validation
+- Secure error handling
+
+### Database & Infrastructure
+- PostgreSQL with proper migrations
+- Supabase Storage for media
+- Dockerized environment (optional bonus)
+
+## Database Schema
+
+```mermaid
 erDiagram
     users ||--o{ companies : "1:1"
     users {
@@ -59,107 +87,103 @@ erDiagram
     }
 ```
 
----
+## Setup Instructions
 
-## Architecture Overview (ARCHITECTURE.md)
+### Prerequisites
+- Node.js v16+
+- PostgreSQL
+- Supabase account (for storage)
 
-### Authentication Flow
-
-```
-sequenceDiagram
-    Frontend->>Backend: POST /signup (email, password)
-    Backend->>DB: Hash password & create user
-    Backend->>Frontend: 201 Created
-    Frontend->>Backend: POST /login (credentials)
-    Backend->>Frontend: JWT Token
-    Frontend->>Backend: Subsequent requests (with JWT)
-    Backend->>Frontend: Authorized data
-```
-
-### Key Design Decisions
-
-1. Modular Routing:
-   - Auth: /routes/auth.ts
-   - Companies: /routes/companies.ts
-   - Tenders: /routes/tenders.ts
-
-2. Storage Integration:
-
-```typescript
-// Supabase upload example
-const uploadLogo = async (companyId: string, file: File) => {
-  const { data, error } = await supabase.storage
-    .from('company-logos')
-    .upload(`logos/${companyId}`, file);
-  return { data, error };
-}
-```
-
-3. Error Handling:
-   - Input validation with Zod
-   - Centralized error middleware
-   - Standardized API error responses
-
----
-
-## Loom Video Script Template
-
-Title: "B2B Tender Platform Walkthrough - dawit mengesha"
-
-Introduction (0:00-0:30):
-"Hello, I'm dawit mengesha, presenting my Full-Stack Developer Internship submission.
-I've built a B2B tender platform using Next.js, Express, and PostgreSQL in five days."
-
-Key Features Demo (0:30-1:30):
-1. Company Registration:
-   - Demonstrate the signup process with validation
-   - Show logo upload functionality
-
-2. Tender Management:
-   - Walk through creating a new tender
-   - Display paginated tender listings
-
-3. Search Functionality:
-   - Perform a company search by industry
-   - View complete company profiles
-
-Technical Highlights (1:30-2:30):
-"The backend implements JWT authentication with role-based access controls.
-I used PostgreSQL full-text search for efficient company discovery.
-Docker containers ensure consistent environments across deployments."
-
-Challenges & Learnings (2:30-end):
-"File upload handling required careful error state management.
-Structuring the monorepo taught me about shared type definitions.
-Future improvements could include real-time notifications."
-
----
-
-## Quick Start
-
+### Installation
 ```bash
-# Using Docker
+# Clone repository
+git clone https://github.com/daveontrack/B2B.git
+cd B2B
+
+# Install dependencies
+cd backend && npm install
+cd ../frontend && npm install
+
+# Configure environment variables
+cp .env.example .env
+```
+
+### Database Setup
+```bash
+# Run migrations
+cd backend
+npx knex migrate:latest
+
+# Seed initial data (optional)
+npx knex seed:run
+```
+
+### Running the Application
+```bash
+# Using Docker (recommended)
 docker-compose up -d
 
-# Local development
-cd backend && npm run migrate
-npm run dev # in both frontend and backend folders
+# Manual startup
+cd backend && npm run dev
+cd ../frontend && npm run dev
 ```
 
----
+## API Documentation
 
-## Submission Links
-- GitHub:(https://github.com/daveontrack/B2B)
-- Loom Video: https://loom.com/share/b234
-
----
-
-"This project significantly improved my full-stack development skills and time management. I look forward to discussing how I can contribute to your team."
-
-- dawit mengesha
+### Authentication Flow
+```mermaid
+sequenceDiagram
+    Frontend->>Backend: POST /auth/signup
+    Backend->>DB: Create user record
+    Backend->>Frontend: JWT Token
+    Frontend->>Backend: Authenticated requests
 ```
 
-Tips for submission:
-1. Use the Mermaid Live Editor to adjust the ER diagram as needed
-2. Keep the Loom video concise (under 3 minutes) with clear demonstrations
-3. Highlight your most creative technical solutions in the architecture overview"# B2B" 
+### Key Endpoints
+- `POST /auth/login` - User authentication
+- `GET /companies?search=` - Company search
+- `POST /tenders` - Create new tender
+- `GET /tenders?page=` - Paginated tender listings
+
+## Deployment
+
+The application can be deployed with:
+- Frontend: Vercel
+- Backend: Heroku/Railway
+- Database: Supabase/Amazon RDS
+
+Example deployment commands:
+```bash
+# Frontend deployment to Vercel
+vercel --prod
+
+# Backend deployment to Heroku
+git push heroku main
+```
+
+## Demo Links
+- Video Walkthrough: [Loom Video](https://loom.com/share/b234)
+
+## Challenges & Solutions
+
+1. **File Upload Handling**
+   - Implemented pre-upload validation
+   - Added error recovery for failed uploads
+
+2. **Search Performance**
+   - Used PostgreSQL full-text search
+   - Added composite indexes for common queries
+
+3. **Type Sharing**
+   - Created shared types package in monorepo
+   - Automated type generation for frontend
+
+## Future Improvements
+- Real-time notifications
+- Tender application tracking
+- Enhanced search filters
+- Mobile-responsive design
+
+---
+Developed by Dawit Mengesha for Full-Stack Developer Internship position
+```
