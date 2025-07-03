@@ -1,4 +1,3 @@
-Here's a cleaned-up version without bold formatting and with rewritten code blocks:
 
 ```
 # B2B Tender Platform - Internship Submission
@@ -105,10 +104,10 @@ const uploadLogo = async (companyId: string, file: File) => {
 
 ## Loom Video Script Template
 
-Title: "B2B Tender Platform Walkthrough - [Your Name]"
+Title: "B2B Tender Platform Walkthrough - dawit mengesha"
 
 Introduction (0:00-0:30):
-"Hello, I'm [Name], presenting my Full-Stack Developer Internship submission.
+"Hello, I'm dawit mengesha, presenting my Full-Stack Developer Internship submission.
 I've built a B2B tender platform using Next.js, Express, and PostgreSQL in five days."
 
 Key Features Demo (0:30-1:30):
@@ -151,14 +150,13 @@ npm run dev # in both frontend and backend folders
 
 ## Submission Links
 - GitHub: https://github.com/[yourname]/tender-platform
-- Live Demo: https://tender-platform.vercel.app
-- Loom Video: https://loom.com/share/[video-id]
+- Loom Video: https://loom.com/share/b234
 
 ---
 
 "This project significantly improved my full-stack development skills and time management. I look forward to discussing how I can contribute to your team."
 
-- [Your Name]
+- dawit mengesha
 ```
 
 Tips for submission:
