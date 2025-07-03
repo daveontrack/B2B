@@ -23,7 +23,7 @@ A full-stack solution for companies to manage tenders and business collaboration
 ## Technology Stack
 
 ### Frontend
-- Next.js (TypeScript)
+- Next.js (TypeScript),Reactjs
 - Static and Server-side Rendering
 - Client-side form validation
 
