@@ -1,1 +1,1 @@
-"# B2B-Tender-Management-Platform-Ecommerce-" 
+"# B2B-Tender-Platform" 
