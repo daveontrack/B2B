@@ -161,9 +161,6 @@ vercel --prod
 git push heroku main
 ```
 
-## Demo Links
-- Video Walkthrough: [Loom Video](https://loom.com/share/b234)
-
 ## Challenges & Solutions
 
 1. **File Upload Handling**
